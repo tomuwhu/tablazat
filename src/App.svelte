@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
-    import { get } from "svelte/store";
-  let data = []
+  let data:any = []
   let datum = '2024-10-24'
-  const apikey = 'ngPn3mJPG4y7T1HGBUMzhsSYQRRdwmaRzpaJap06'
+  const apikey = import.meta.env.VITE_API_KEY
   const getData =async() => {
     data = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${datum}&end_date=${datum}&api_key=${apikey}`)
     data = (await data.json()).near_earth_objects[datum]
